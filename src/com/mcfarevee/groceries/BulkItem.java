@@ -7,9 +7,12 @@ public class BulkItem implements Item {
   // +--------+
 
   BulkFood food;
+  
   Unit unit;
+  
   int amount;
 
+  
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -20,12 +23,13 @@ public class BulkItem implements Item {
     this.amount = aAmount;
   }
 
+  
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
 
   public String toString() {
-    return Integer.toString(amount) + " " + unit.toString() + " of " + food.name;
+    return Integer.toString(amount) + " " + unit.abbrev + " of " + food.name;
   }
 
   public Weight getWeight() {

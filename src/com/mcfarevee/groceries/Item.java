@@ -7,7 +7,6 @@ public interface Item {
   // | Methods |
   // +---------+
 
-
   public String toString();
 
   public Weight getWeight();
@@ -20,5 +19,4 @@ public interface Item {
   
   public String getName();
    
-
 } // interface Item

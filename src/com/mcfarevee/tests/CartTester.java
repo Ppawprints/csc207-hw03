@@ -20,20 +20,34 @@ public class CartTester {
     BulkFood saffron = new BulkFood("saffron", Unit.GRAM, 1000, 20);
 
     Cart cart = new Cart();
-    cart.addItem(new BulkItem(bananas, Unit.POUND, 3));
-    cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
-    cart.addItem(new ManyPackages(new Package("macncheez", new Weight(Unit.OUNCE, 6), 77), 5));
-    cart.addItem(new BulkItem(bananas, Unit.POUND, 13));
-    cart.addItem(new NonFood("stone", new Weight(Unit.OUNCE, 11), 19));
-    cart.addItem(new BulkItem(saffron, Unit.GRAM, 3));
-    cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
-    cart.addItem(new ManyPackages(new Package("oreos", new Weight(Unit.OUNCE, 12), 399), 4));
+//    cart.addItem(new BulkItem(bananas, Unit.POUND, 3));
+//    cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
+//    cart.addItem(new ManyPackages(new Package("macncheez", new Weight(Unit.OUNCE, 6), 77), 5));
+//    cart.addItem(new BulkItem(bananas, Unit.POUND, 13));
+//    cart.addItem(new NonFood("stone", new Weight(Unit.OUNCE, 11), 19));
+//    cart.addItem(new BulkItem(saffron, Unit.GRAM, 3));
+//    cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
+//    cart.addItem(new ManyPackages(new Package("oreos", new Weight(Unit.OUNCE, 12), 399), 4));
+
+
+
+    cart.printContent(pen);
+
+    pen.println(cart.getPrice());
+    pen.println();
+
+    cart.merge();
+    cart.printContent(pen);
+    pen.println();
+
+    pen.println(cart.getPrice());
+    pen.println();
 
     Weight[] weight = cart.getWeight();
     for (int i = 0; i < weight.length; i++) {
       pen.println(weight[i].unit.toString() + " " + weight[i].amount);
     }
 
-    
+
   }
 }

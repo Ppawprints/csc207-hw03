@@ -6,8 +6,10 @@ public class ManyPackages implements Item {
   // +--------+
 
   Package type;
+  
   public int count;
 
+  
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -21,11 +23,9 @@ public class ManyPackages implements Item {
     return Integer.toString(count) + " x " + this.type.toString();
   }
 
-
   public Weight getWeight() {
     return new Weight(this.type.weight.unit, this.count * this.type.weight.amount);
   }
-
 
   public int getPrice() {
     return this.count * this.type.price;

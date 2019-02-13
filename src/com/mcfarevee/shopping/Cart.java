@@ -14,7 +14,9 @@ public class Cart {
   // +--------+
 
   LinkedList<Item> items;
+
   int numOfThings;
+
   int numOfEntries;
 
 
@@ -28,26 +30,28 @@ public class Cart {
     items = new LinkedList<>();
   }
 
+
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
 
   public void addItem(Item item) {
     items.add(item);
-    if (item instanceof ManyPackages) {
-      numOfThings += ((ManyPackages) item).count;
-    } else {
-      numOfThings++;
-    }
-    numOfEntries++;
   }
 
   public int numThings() {
+    for (Item item : items) {
+      if (item instanceof ManyPackages) {
+        this.numOfThings += ((ManyPackages) item).count;
+      } else {
+        this.numOfThings++;
+      }
+    }
     return numOfThings;
   }
 
   public int numEntries() {
-    return numOfEntries;
+    return items.size();
   }
 
   public void printContent(PrintWriter pen) {
@@ -55,7 +59,6 @@ public class Cart {
     for (Item item : items) {
       pen.println(item.toString());
     }
-
   }
 
   public int getPrice() {
@@ -82,47 +85,46 @@ public class Cart {
     return weights;
   }
 
+  /**
+   * Remove Item(s) with name identical to given name
+   * 
+   * @param name String of name of Item to be removed
+   * @return entriesRemoved Integer value of Item(s) removed
+   */
   public int remove(String name) {
     int index = 0;
     int entriesRemoved = 0;
-    int thingsRemoved = 0;
-    for (int i = 0; i < this.numOfEntries; i++) {
+    for (int i = 0; i < items.size(); i++) {
       if (name.equals(items.get(index).getName())) {
         entriesRemoved += 1;
-        if (items.get(index) instanceof ManyPackages) {
-          thingsRemoved += ((ManyPackages) items.get(index)).count;
-        } else {
-          thingsRemoved += 1;
-        }
         items.remove(index);
       } else
-        index++;
+        index++; //increment index if no Item is removed
     }
-    this.numOfEntries -= entriesRemoved;
-    this.numOfThings -= thingsRemoved;
-    
     return entriesRemoved;
   }
 
+  /**
+   * Merge all merge-able Item(s)
+   * 
+   * @return count Integer value of pairs of Items merged
+   */
   public int merge() {
     int index = 0;
     int count = 0;
-    while (index < this.numOfEntries) {
+    while (index < items.size()) {
       int indexToCompare = index + 1;
-      while (indexToCompare < this.numOfEntries) {
+      while (indexToCompare < items.size()) {
         if (items.get(index).canMerge(items.get(indexToCompare))) {
           items.addLast(items.get(index).merge(items.get(indexToCompare)));
-          this.numOfEntries--;
           count++;
           items.remove(indexToCompare);
           items.remove(index);
         } else
-          indexToCompare++;
+          indexToCompare++; //increment indexToCompare if no merge happened
       }
       index++;
     }
-
     return count;
-
   }
 }

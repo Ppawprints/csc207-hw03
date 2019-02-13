@@ -7,8 +7,11 @@ public class NonFood implements Item {
   // +--------+
 
   String name;
+  
   Weight weight;
+  
   int price;
+  
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -19,6 +22,7 @@ public class NonFood implements Item {
     weight = aWeight;
     price = aPrice;
   }
+  
 
   // +---------+-----------------------------------------------------------
   // | Methods |
@@ -28,11 +32,9 @@ public class NonFood implements Item {
     return this.name;
   }
 
-
   public Weight getWeight() {
     return this.weight;
   }
-
 
   public int getPrice() {
     return this.price;

@@ -19,15 +19,14 @@ public class BulkFood {
   // | Constructors |
   // +--------------+
 
-
   public BulkFood(String _name, Unit _unit, int _pricePerUnit, int _supply) {
     this.name = _name;
     this.unit = _unit;
     this.pricePerUnit = _pricePerUnit;
     this.supply = _supply;  
-
   }
 
+  
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
@@ -41,5 +40,4 @@ public class BulkFood {
     }
     return false;
   }
-
 }
