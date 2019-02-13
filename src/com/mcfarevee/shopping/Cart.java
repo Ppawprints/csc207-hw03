@@ -110,6 +110,7 @@ public class Cart {
    * @return count Integer value of pairs of Items merged
    */
   public int merge() {
+	  /* Remember to change number of Things */
     int index = 0;
     int count = 0;
     while (index < items.size()) {
