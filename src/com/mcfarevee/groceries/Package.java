@@ -1,6 +1,6 @@
 package com.mcfarevee.groceries;
 
-public class Package implements Item{
+public class Package implements Item {
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
@@ -34,6 +34,10 @@ public class Package implements Item{
   public int getPrice() {
     return price;
   }
+  
+  public String getName() {
+    return this.name;
+  }
 
   public boolean equals(Object other) {
     if (other instanceof Package) {
@@ -43,5 +47,25 @@ public class Package implements Item{
         return true;
     }
     return false;
+  }
+
+  public boolean canMerge(Item other) {
+    if (other instanceof Package) {
+      return this.equals(other);
+    } else if (other instanceof ManyPackages) {
+      return this.equals(((ManyPackages) other).type);
+    } else
+      return false;
+  }
+
+  public Item merge(Item other) {
+    if (this.canMerge(other)) {
+      if (other instanceof Package) {
+        return new ManyPackages(this, 2);
+      } else {
+        return new ManyPackages(this, (((ManyPackages) other).count + 1));
+      }
+    }
+    return null;
   }
 }

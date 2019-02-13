@@ -1,7 +1,5 @@
 package com.mcfarevee.groceries;
 
-import csc207.dongyila.layout.TextBlock;
-
 public class BulkItem implements Item {
 
   // +--------+------------------------------------------------------------
@@ -26,7 +24,7 @@ public class BulkItem implements Item {
   // | Methods |
   // +---------+
 
-  public String toSrting() {
+  public String toString() {
     return Integer.toString(amount) + " " + unit.toString() + " of " + food.name;
   }
 
@@ -37,6 +35,10 @@ public class BulkItem implements Item {
   public int getPrice() {
     return food.pricePerUnit * amount;
   }
+  
+  public String getName() {
+    return food.name;
+  }
 
   public boolean equals(Object other) {
     if (other instanceof BulkItem) {
@@ -46,5 +48,20 @@ public class BulkItem implements Item {
         return true;
     }
     return false;
+  }
+
+  public boolean canMerge(Item other) {
+    if (other instanceof BulkItem) {
+      BulkItem otherItem = (BulkItem) other;
+      return otherItem.food.equals(this.food) && otherItem.unit.equals(this.unit);
+    }   
+    return false;
+  }
+
+  public Item merge(Item other) {
+    if (this.canMerge(other)) {
+      return new BulkItem(this.food, this.unit, this.amount + ((BulkItem) other).amount);
+    }
+    return null;
   }
 }

@@ -37,6 +37,10 @@ public class NonFood implements Item {
   public int getPrice() {
     return this.price;
   }
+  
+  public String getName() {
+    return this.name;
+  }
 
   public boolean equals(Object other) {
     if (other instanceof NonFood) {
@@ -46,6 +50,14 @@ public class NonFood implements Item {
         return true;
     }
     return false;
+  }
+
+  public boolean canMerge(Item other) {
+    return false;
+  }
+
+  public Item merge(Item other) {
+    return null;
   }
 
 }

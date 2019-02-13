@@ -7,7 +7,7 @@ public class GroceryTester {
     Weight weight = new Weight(Unit.GRAM, 100);
     Package pack = new Package("Package", weight, 17);
     ManyPackages packs = new ManyPackages(pack, 12);
-    System.out.println(packs.toSrting());
+    System.out.println(packs.toString());
     System.out.println(food.getClass());
   }
 }

@@ -6,7 +6,7 @@ public class BulkFood {
   // | Fields |
   // +--------+
 
-  String name;
+  public String name;
 
   Unit unit;
 
@@ -24,7 +24,8 @@ public class BulkFood {
     this.name = _name;
     this.unit = _unit;
     this.pricePerUnit = _pricePerUnit;
-    this.supply = _supply;
+    this.supply = _supply;  
+
   }
 
   // +---------+-----------------------------------------------------------

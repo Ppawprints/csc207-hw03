@@ -8,9 +8,9 @@ public class Weight {
   // | Fields |
   // +--------+
 
-  Unit unit;
+  public Unit unit;
 
-  int amount;
+  public int amount;
 
 
   // +--------------+------------------------------------------------------
