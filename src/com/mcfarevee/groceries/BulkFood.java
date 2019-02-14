@@ -19,6 +19,12 @@ public class BulkFood {
   // | Constructors |
   // +--------------+
 
+  /**
+   * @param _name
+   * @param _unit
+   * @param _pricePerUnit
+   * @param _supply
+   */
   public BulkFood(String _name, Unit _unit, int _pricePerUnit, int _supply) {
     this.name = _name;
     this.unit = _unit;

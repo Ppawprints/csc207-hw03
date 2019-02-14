@@ -6,11 +6,11 @@ public class Package implements Item {
   // +--------+
 
   String name;
-  
+
   Weight weight;
-  
+
   int price;
-  
+
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -21,7 +21,7 @@ public class Package implements Item {
     weight = aWeight;
     price = aPrice;
   }
-  
+
 
   // +---------+-----------------------------------------------------------
   // | Methods |
@@ -38,7 +38,7 @@ public class Package implements Item {
   public int getPrice() {
     return price;
   }
-  
+
   public String getName() {
     return this.name;
   }
@@ -52,7 +52,14 @@ public class Package implements Item {
     }
     return false;
   }
-  
+
+  /*
+   * Determine if the other Item can merge with this
+   * 
+   * @param other Item other for comparison
+   * 
+   * @return boolean true if merge-able, otherwise false
+   */
   public boolean canMerge(Item other) {
     if (other instanceof Package) {
       return this.equals(other);
