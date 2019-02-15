@@ -1,11 +1,9 @@
 package com.mcfarevee.tests;
 
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import com.mcfarevee.groceries.Package;
 import com.mcfarevee.groceries.BulkFood;
 import com.mcfarevee.groceries.BulkItem;
-import com.mcfarevee.groceries.Item;
 import com.mcfarevee.groceries.ManyPackages;
 import com.mcfarevee.groceries.NonFood;
 import com.mcfarevee.groceries.Unit;
@@ -88,5 +86,15 @@ public class CartTester {
         pen.println("Content in the cart");
         cart.printContent(pen);
         pen.println("getPrice(): " + cart.getPrice());
+
+        /* Merge Test */
+        cart.merge();
+        pen.println("\nAfter Merge:");
+        cart.printContent(pen);
+
+        /* Rmove Test */
+        cart.remove("amazon");
+        pen.println("\nAfter Deletion: ");
+        cart.printContent(pen);
     }
 }
