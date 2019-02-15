@@ -18,21 +18,21 @@ public class CartTester {
         /* from https://www.cs.grinnell.edu/~rebelsky/Courses/CSC207/2019S/01/
                 assignments/assignment03.html */
         Cart cart = new Cart();
-        PenWriter pen = new PenWriter(System.out, true);
+        PrintWriter pen = new PrintWriter(System.out, true);
 
-        BulkFood bananas = new BulkFood("bananas", Unit.POUNDS, 50, 20);
-        BulkFood saffron = new BulkFood("saffron", Unit.GRAMS, 1000, 200);
+        BulkFood bananas = new BulkFood("bananas", Unit.POUND, 50, 20);
+        BulkFood saffron = new BulkFood("saffron", Unit.GRAM, 1000, 200);
 
-        BulkItem bulkItemBananas = new BulkItem(bananas, Unit.POUNDS, 3);
-        BulkItem bulkItemSaffron = new BulkItem(saffron, Unit.GRAMS, 1);
+        BulkItem bulkItemBananas = new BulkItem(bananas, Unit.POUND, 3);
+        BulkItem bulkItemSaffron = new BulkItem(saffron, Unit.GRAM, 1);
         Package packageAmazon = new Package("amazon", 
-                                            new Weight(Unit.GRAMS, 100), 
+                                            new Weight(Unit.GRAM, 100),
                                             100);
-        ManyPackage manyPackageAmazon = new ManyPackage(new Package("amazon", 
-                                                 new Weight(Unit.GRAMS, 100), 
+        ManyPackages manyPackageAmazon = new ManyPackages(new Package("amazon",
+                                                 new Weight(Unit.GRAM, 100),
                                                  100), 5);
-        NonFood nonFoodStone = new NonFood("stone", new Weight(Unit.POUNDS, 200), 
-                                           99));
+        NonFood nonFoodStone = new NonFood("stone", new Weight(Unit.POUND, 200),
+                                           99);
         
         /* Add them into Cart */
         cart.addItem(bulkItemBananas);
@@ -45,17 +45,17 @@ public class CartTester {
 
         /* BulkItem */
         pen.println("BulkItem Test");
-        pen.println("toString(): " + bananas.toString());
-        pen.println("getWeight(): " + bananas.getWeight().unit.name);
-        pen.println("getPrice(): " + bananas.getPrice());
-        pen.println("getName(): " + bananas.getName());
-        pen.println("equals(): " + bananas.equals(saffron)); // should be false
+        pen.println("toString(): " + bulkItemBananas.toString());
+        pen.println("getWeight(): " + bulkItemBananas.getWeight().unit.plural());
+        pen.println("getPrice(): " + bulkItemBananas.getPrice());
+        pen.println("getName(): " + bulkItemBananas.getName());
+        pen.println("equals(): " + bulkItemBananas.equals(saffron)); // should be false
         pen.println();
 
         /* ManyPackages */
         pen.println("ManyPackages Test");
         pen.println("toString(): " + manyPackageAmazon.toString());
-        pen.println("getWeight(): " + manyPackageAmazon.getWeight().unit.name);
+        pen.println("getWeight(): " + manyPackageAmazon.getWeight().unit.plural());
         pen.println("getPrice(): " + manyPackageAmazon.getPrice());
         pen.println("getName(): " + manyPackageAmazon.getName());
         pen.println("equals(): " + manyPackageAmazon.equals(manyPackageAmazon)); 
@@ -65,17 +65,17 @@ public class CartTester {
         /* NonFood */
         pen.println("NonFood Test");
         pen.println("toString(): " + nonFoodStone.toString());
-        pen.println("getWeight(): " + nonFoodStone.getWeight().unit.name);
+        pen.println("getWeight(): " + nonFoodStone.getWeight().unit.plural());
         pen.println("getPrice(): " + nonFoodStone.getPrice());
         pen.println("getName(): " + nonFoodStone.getName());
-        pen.println("equals(): " + nonFoodStone.equals(new NonFood("stone", new Weight(Unit.POUNDS, 200), 99));)); 
+        pen.println("equals(): " + nonFoodStone.equals(new NonFood("stone", new Weight(Unit.POUND, 200), 99)));
                                     // should be true
         pen.println();
 
         /* Package */
         pen.println("Package Test");
         pen.println("toString(): " + packageAmazon.toString());
-        pen.println("getWeight(): " + packageAmazon.getWeight().unit.name);
+        pen.println("getWeight(): " + packageAmazon.getWeight().unit.plural());
         pen.println("getPrice(): " + packageAmazon.getPrice());
         pen.println("getName(): " + packageAmazon.getName());
         pen.println("equals(): " + packageAmazon.equals(packageAmazon));
@@ -86,7 +86,7 @@ public class CartTester {
         pen.println("numThings(): " + cart.numThings());
         pen.println("numEntries(): " + cart.numEntries());
         pen.println("Content in the cart");
-        cart.printContents(pen);
+        cart.printContent(pen);
         pen.println("getPrice(): " + cart.getPrice());
     }
 }
